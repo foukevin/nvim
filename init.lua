@@ -3,3 +3,8 @@ require("config.lazy")
 require("config.keymaps")
 require("config.autocmds")
 
+vim.filetype.add({
+    extension = {
+        hlsl = "hlsl",
+    },
+})
