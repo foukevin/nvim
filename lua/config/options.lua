@@ -8,9 +8,9 @@ local options = {
     showmode        = false,    -- If in Insert, Replace or Visual mode
                                 -- put a message on the last line
     colorcolumn     = "100",    -- 'colorcolumn' is a comma-separated list
+    signcolumn      = "yes",    -- When and how to draw the signcolumn
+    wrap            = false,    -- When on, lines longer than the width of the window will wrap
 
-
-    swapfile        = false,
 
     -- tabs and indentation
     breakindent     = true,     -- Every wrapped line will continue visually indented
@@ -44,9 +44,9 @@ local options = {
     -- colors
     termguicolors   = true,     -- Enables 24-bit RGB color in the Terminal UI
                                 -- of screen columns that are highlighted
+    background      = "dark",   -- When set to "dark" or "light", adjusts the
+                                -- default color groups for that background type
 
-
-    wrap            = false,    -- When on, lines longer than the width of the window will wrap
 
     -- A comma-separated list of options for Insert mode completion
     completeopt     = "menu,menuone,noselect",
@@ -68,6 +68,10 @@ local options = {
     showbreak       = "…",      -- String to put at the start of lines that have been wrapped
     -- Strings to use in 'list' mode and for the :list command
     listchars       = "tab:▸ ,trail:·,nbsp:␣,extends:⇢,precedes:⇠",
+
+
+    -- Swap
+    swapfile        = false,
 }
 
 for k, v in pairs(options) do
