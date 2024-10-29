@@ -14,17 +14,17 @@ local options = {
 
     -- tabs and indentation
     breakindent     = true,     -- Every wrapped line will continue visually indented
-                                   -- (same amount of space as the beginning of that line)
+                                -- (same amount of space as the beginning of that line)
     tabstop         = 4,        -- Number of spaces that a <Tab> in the file counts for
                                 -- number of spaces to insert a <Tab>
     shiftwidth      = 4,        -- Number of spaces to use for each step of (auto)indent
     expandtab       = true,     -- In Insert mode: Use the appropriate
     -- smartindent     = true,     -- Do smart autoindenting when starting a new line
-    backspace       = "indent,eol,start",
     cindent         = true,     -- Enables automatic C program indenting
-    -- The 'cinoptions' affect the way 'cindent' reindents lines in a C program
-    cinoptions      = ":0,(0,g0,t0,l1",
-    -- Influences the working of <BS>, <Del>, CTRL-W and CTRL-U in Insert mode
+    cinoptions      = ":0,(0,g0,t0,l1,N-s,E-s", -- The 'cinoptions' affect the way 'cindent'
+                                                -- reindents lines in a C program
+    backspace       = "indent,eol,start",       -- Influences the working of <BS>, <Del>,
+                                                -- CTRL-W and CTRL-U in Insert mode
 
 
     -- bracket matching
