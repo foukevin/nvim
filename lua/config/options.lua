@@ -70,8 +70,10 @@ local options = {
     listchars       = "tab:▸ ,trail:·,nbsp:␣,extends:⇢,precedes:⇠",
 
 
-    -- Swap
+    -- Swap and session
     swapfile        = false,
+    -- Changes the effect of the :mksession command.
+    sessionoptions  = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 }
 
 for k, v in pairs(options) do
