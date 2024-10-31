@@ -13,7 +13,7 @@ return {
             -- enable syntax highlighting
             highlight = { enable = true },
             -- enable indentation
-            indent = { enable = true },
+            -- indent = { enable = true },
             -- enable autotagging (with nvim-ts-autotag plugin)
             autotag = { enable = true },
             -- ensure these language parsers are installed
