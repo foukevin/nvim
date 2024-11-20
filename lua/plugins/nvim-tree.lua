@@ -8,7 +8,28 @@ local config = function()
     nvimtree.setup({
         view = {
             width = 35,
+            number = false,
             relativenumber = false,
+        },
+        git = {
+            enable = true,
+        },
+        renderer = {
+            highlight_git = true,
+            icons = {
+                glyphs = {
+                    git = {
+                        -- 󱀻󰻭󱪝󱪝
+                        unstaged = "󰷉",
+                        staged = "󰸩",
+                        unmerged = "",
+                        renamed = "󱇨",
+                        untracked = "󱀶",
+                        deleted = "󱀷",
+                        ignored = "",
+                    },
+                },
+            },
         },
     })
 
