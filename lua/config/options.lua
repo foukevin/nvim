@@ -80,7 +80,25 @@ for k, v in pairs(options) do
     vim.o[k] = v
 end
 
+
+-- Add filetypes
+vim.filetype.add({
+    extension = {
+        hlsl = "hlsl",
+    },
+})
+
+
 -- Sets <space> as the leader key
 vim.g.mapleader = ' '
 vim.g.maplocallleader = ' '
 
+
+-- Use italic font for comments
+local function update_hl( group, tbl )
+    local old_hl = vim.api.nvim_get_hl_by_name( group, true )
+    local new_hl = vim.tbl_extend( 'force', old_hl, tbl )
+    vim.api.nvim_set_hl( 0, group, new_hl )
+end
+
+update_hl( 'Comment', { italic = true } )
