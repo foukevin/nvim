@@ -24,6 +24,7 @@ local keymap = function()
         { "<leader>fg", builtin.live_grep, desc = "Live grep" },
         { "<leader>fb", builtin.buffers, desc = "Buffers" },
         { "<leader>fh", builtin.help_tags, desc = "Help tags" },
+        { "<leader>fs", builtin.lsp_document_symbols, desc = "Symbols" },
     })
 end
 
