@@ -1,3 +1,5 @@
-local map = vim.api.nvim_set_keymap
+local keymap = vim.api.nvim_set_keymap
 
-map("n", ";;", "<S-A>;<ESC>", { noremap = true, silent = false })
+-- Append semicolumn to line when type ;; in NORMAL mode
+-- TODO: should only do this for C/C++ files
+keymap("n", ";;", "<S-A>;<ESC>", { noremap = true, silent = false })
