@@ -7,7 +7,7 @@ local options = {
                                 -- keep above and below the cursor
     showmode        = false,    -- If in Insert, Replace or Visual mode
                                 -- put a message on the last line
-    colorcolumn     = "80",     -- 'colorcolumn' is a comma-separated list
+    colorcolumn     = "80,100", -- 'colorcolumn' is a comma-separated list
     signcolumn      = "yes",    -- When and how to draw the signcolumn
     wrap            = false,    -- When on, lines longer than the width of the window will wrap
 

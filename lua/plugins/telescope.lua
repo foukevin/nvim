@@ -1,7 +1,10 @@
 local config = function()
         require("telescope").setup({
             defaults = {
-                path_display = { "smart" },
+                path_display = {
+                    "smart",
+                    truncate = 3,
+                },
                 theme = "center",
                 sorting_strategy = "ascending",
                 layout_config = {
