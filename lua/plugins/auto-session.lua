@@ -13,9 +13,9 @@ return {
             { mode = "n" },
             { "<Leader>w", group = "Auto-session"},
             -- restore last workspace session for current directory
-            { "<Leader>wr", "<cmd>SessionRestore<CR>", desc = "Restore session for cwd" },
+            { "<Leader>wr", "<cmd>AutoSession restore<CR>", desc = "Restore session for cwd" },
             -- save workspace session for current working directory
-            { "<Leader>ws", "<cmd>SessionSave<CR>", desc = "Save session for auto session root dir" },
+            { "<Leader>ws", "<cmd>AutoSession save<CR>", desc = "Save session for auto session root dir" },
         })
     end,
 }
