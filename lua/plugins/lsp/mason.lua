@@ -22,6 +22,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "clangd",
+                "pylsp",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true,
