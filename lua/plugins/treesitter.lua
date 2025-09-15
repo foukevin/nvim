@@ -3,7 +3,7 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "windwp/nvim-ts-autotag"
+        "windwp/nvim-ts-autotag",
     },
     config = function()
         local treesitter = require("nvim-treesitter.configs")
@@ -18,10 +18,13 @@ return {
             autotag = { enable = true },
             -- ensure these language parsers are installed
             ensure_installed = {
-                "c", "cpp",
-                "hlsl", "glsl",
+                "c",
+                "cpp",
+                "hlsl",
+                "glsl",
                 "gitignore",
-                "markdown", "markdown_inline",
+                "markdown",
+                "markdown_inline",
                 "lua",
                 "vim",
             },

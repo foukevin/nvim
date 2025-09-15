@@ -3,6 +3,7 @@ local config = function()
 
     local opts = { noremap = true, silent = true }
 
+    -- Only set up keymap when LSP activates for a buffer
     local on_attach = function(_, bufnr)
         local builtin = require("telescope.builtin")
         local wk = require("which-key")
@@ -70,8 +71,6 @@ local config = function()
         }
     }
 
-    local lspconfig = require("lspconfig")
-
     vim.diagnostic.config({ virtual_text = false })
 
     vim.lsp.config('clangd', {
@@ -80,13 +79,14 @@ local config = function()
         on_attach = on_attach,
     })
 
+    local lspconfig = require("lspconfig")
     -- configure clangd for C/C++
     -- lspconfig["clangd"].setup({
     --     capabilities = capabilities,
     --     on_attach = on_attach,
     -- })
 
-    lspconfig["lua_ls"].setup({
+    lspconfig.lua_ls.setup({
         capabilities = capabilities,
         on_attach = on_attach,
         settings = {

@@ -92,7 +92,7 @@ vim.filetype.add({
 
 -- Sets <space> as the leader key
 vim.g.mapleader = ' '
-vim.g.maplocallleader = ' '
+vim.g.maplocalleader = ' '
 
 
 -- Virutal line diagnostics

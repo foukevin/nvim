@@ -37,14 +37,13 @@ local config = function()
     local wk = require("which-key")
     wk.add({
         mode = "n",
-        { "<Leader>e", group = "NvimTree" },
-        { "<Leader>ee", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer" }
+        { "<Leader>e",  group = "NvimTree" },
+        { "<Leader>ee", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer" },
     })
 end
-
 
 return {
     "nvim-tree/nvim-tree.lua",
     dependencies = "nvim-tree/nvim-web-devicons",
-    config = config
+    config = config,
 }

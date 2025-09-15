@@ -1,20 +1,20 @@
 local config = function()
-        require("telescope").setup({
-            defaults = {
-                path_display = {
-                    "smart",
-                    truncate = 3,
-                },
-                theme = "center",
-                sorting_strategy = "ascending",
-                layout_config = {
-                    horizontal = {
-                        prompt_position = "top",
-                        preview_width = 0.5
-                    },
+    require("telescope").setup({
+        defaults = {
+            path_display = {
+                "smart",
+                truncate = 3,
+            },
+            theme = "center",
+            sorting_strategy = "ascending",
+            layout_config = {
+                horizontal = {
+                    prompt_position = "top",
+                    preview_width = 0.5
                 },
             },
-        })
+        },
+    })
 end
 
 local keymap = function()
@@ -32,17 +32,35 @@ local keymap = function()
 end
 
 return {
-    "nvim-telescope/telescope.nvim",
-    -- tag = "0.1.8",
-    -- branch = "0.1.x",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
+    {
+        "nvim-telescope/telescope.nvim",
+        -- tag = "0.1.8",
+        -- branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
+            },
+            "nvim-tree/nvim-web-devicons",
         },
-        "nvim-tree/nvim-web-devicons",
+        config = config,
+        opts = keymap,
     },
-    config = config,
-    opts = keymap,
+    {
+        "nvim-telescope/telescope-ui-select.nvim",
+        config = function()
+            require("telescope").setup({
+                extensions = {
+                    ["ui-select"] = {
+                        require("telescope.themes").get_dropdown {
+                            -- even more opts
+                        }
+                    }
+                }
+            })
+            require("telescope").load_extension("ui-select")
+        end
+
+    }
 }
