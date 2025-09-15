@@ -15,16 +15,16 @@ return {
             }
         })
 
-        local mason_lspconfig = require("mason-lspconfig")
-        mason_lspconfig.setup({
-            -- list of server for mason to install
-            ensure_installed = {
-                "lua_ls",
-                "clangd",
-                "pylsp",
-            },
-            -- auto-install configured servers (with lspconfig)
-            automatic_installation = true,
-        })
+        -- local mason_lspconfig = require("mason-lspconfig")
+        -- mason_lspconfig.setup({
+        --     -- list of server for mason to install
+        --     -- ensure_installed = {
+        --     --     "lua_ls",
+        --     --     "clangd",
+        --     --     "pylsp",
+        --     -- },
+        --     -- auto-install configured servers (with lspconfig)
+        --     automatic_installation = true,
+        -- })
     end,
 }

@@ -12,7 +12,7 @@ return {
 
         local conf = {
             win = {
-                border = "double", -- none, single, double, shadow
+                border = "double",   -- none, single, double, shadow
                 position = "bottom", -- bottom, top
             },
             -- preset = "helix",

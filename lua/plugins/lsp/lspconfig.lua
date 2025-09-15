@@ -73,11 +73,11 @@ local config = function()
 
     vim.diagnostic.config({ virtual_text = false })
 
-    vim.lsp.config('clangd', {
-        cmd = { 'clangd' },
-        filetypes = { 'c', 'cpp' },
-        on_attach = on_attach,
-    })
+    -- vim.lsp.config('clangd', {
+    --     cmd = { 'clangd' },
+    --     filetypes = { 'c', 'cpp' },
+    --     on_attach = on_attach,
+    -- })
 
     local lspconfig = require("lspconfig")
     -- configure clangd for C/C++
@@ -85,6 +85,11 @@ local config = function()
     --     capabilities = capabilities,
     --     on_attach = on_attach,
     -- })
+
+    lspconfig.clangd.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
 
     lspconfig.lua_ls.setup({
         capabilities = capabilities,
