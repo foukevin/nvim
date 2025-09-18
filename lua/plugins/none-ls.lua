@@ -1,5 +1,7 @@
 return {
     "nvimtools/none-ls.nvim",
+    -- Disable plugin as I use conform and nvim-lint
+    enabled = false,
     config = function()
         local null_ls = require("null-ls")
 
