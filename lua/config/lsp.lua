@@ -11,6 +11,7 @@ vim.lsp.config("*", {
 })
 
 vim.diagnostic.config({
+    virtual_text = false,
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = " ",
@@ -28,9 +29,7 @@ vim.diagnostic.config({
     },
 })
 
-vim.diagnostic.config({ virtual_text = false })
-
-function on_attach_keymap()
+function create_lsp_keymap()
     local builtin = require("telescope.builtin")
     local wk = require("which-key")
     wk.add({
@@ -64,7 +63,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
         if client:supports_method('textDocument/implementation') then
             -- Create a keymap for vim.lsp.buf.implementation ...
-            on_attach_keymap()
+            create_lsp_keymap()
         end
 
         -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
@@ -93,3 +92,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.lsp.enable("clangd")
 vim.lsp.enable("luals")
+vim.lsp.enable("pythonls")
