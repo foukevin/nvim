@@ -18,6 +18,7 @@ return {
                 python = { "isort", "black" },
                 c = { "clang_format" },
                 cpp = { "clang_format" },
+                CMake = { "cmake_format" },
             },
             formatters = {
                 stylua = {

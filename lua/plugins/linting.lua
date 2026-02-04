@@ -11,6 +11,7 @@ return {
             c = { "cpplint" },
             cpp = { "cpplint" },
             python = { "pylint" },
+            CMake = { "cmake-lint" },
         }
 
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
