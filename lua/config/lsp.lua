@@ -10,26 +10,6 @@ vim.lsp.config('*', {
     root_markers = { ".git" },
 })
 
-vim.lsp.config('lua_ls', {
-    cmd = { 'lua-language-server' },
-    filetypes = { 'lua' },
-    root_markers = { '.luarc.json', '.luarc.jsonc' },
-    settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
-    workspace = {
-        -- make language server aware of runtime files
-        library = {
-            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-            [vim.fn.stdpath('config') .. '/lua'] = true,
-        },
-    },
-})
-
-vim.lsp.config('clangd', {
-    cmd = { 'clangd' },
-    filetypes = { 'c', 'cpp' },
-    on_attach = on_attach,
-})
-
 vim.diagnostic.config({
     virtual_text = false,
     signs = {
@@ -49,8 +29,8 @@ vim.diagnostic.config({
     },
 })
 
-function create_lsp_keymap()
-    local fzflua = require("fzf-lua")
+local create_lsp_keymap = function()
+    local fzf = require("fzf-lua")
     local wk = require("which-key")
     wk.add({
         mode = "n",
@@ -63,13 +43,13 @@ function create_lsp_keymap()
         -- { "gd",         builtin.lsp_definitions,                                                                   desc = "Show definitions" },
         { "gi",         vim.lsp.buf.implementation,                                                                desc = "Show implementations" },
         { "gt",         vim.lsp.buf.type_definition,                                                               desc = "Show type definitions" },
-        { "<Leader>D",  fzflua.lsp_document_diagnostics,                                                           desc = "Show buffer diagnostics" },
+        { "<Leader>D",  fzf.lsp_document_diagnostics,                                                              desc = "Show buffer diagnostics" },
 
         -- LSP buffer
         { "gD",         vim.lsp.buf.declaration,                                                                   desc = "Go to declaration" },
         { "K",          function() vim.lsp.buf.hover { border = 'rounded', max_height = 25, max_width = 120 } end, desc = "Show documentation for what is under the cursor" },
         { "<Leader>rn", vim.lsp.buf.rename,                                                                        desc = "Smart rename" },
-        { "<Leader>ca", fzflua.lsp_code_actions,                                                                   desc = "Show available code actions" },
+        { "<Leader>ca", fzf.lsp_code_actions,                                                                      desc = "Show available code actions" },
 
         -- diagnostic
         { "<Leader>d",  vim.diagnostic.open_float,                                                                 desc = "Show line diagnostics" },
@@ -110,6 +90,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.lsp.enable("clangd")
-vim.lsp.enable("lua_ls")
+vim.lsp.enable("luals")
 vim.lsp.enable("cmakels")
 vim.lsp.enable("pythonls")
+vim.lsp.enable("mesonls")
