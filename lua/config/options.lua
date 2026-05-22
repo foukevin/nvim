@@ -81,7 +81,6 @@ for k, v in pairs(options) do
     vim.o[k] = v
 end
 
-
 -- Add filetypes
 vim.filetype.add({
     extension = {

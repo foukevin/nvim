@@ -1,5 +1,5 @@
 -- Set default root markers for all clients
-vim.lsp.config("*", {
+vim.lsp.config('*', {
     capabilities = {
         textDocument = {
             semanticTokens = {
@@ -8,6 +8,26 @@ vim.lsp.config("*", {
         }
     },
     root_markers = { ".git" },
+})
+
+vim.lsp.config('lua_ls', {
+    cmd = { 'lua-language-server' },
+    filetypes = { 'lua' },
+    root_markers = { '.luarc.json', '.luarc.jsonc' },
+    settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+    workspace = {
+        -- make language server aware of runtime files
+        library = {
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.stdpath('config') .. '/lua'] = true,
+        },
+    },
+})
+
+vim.lsp.config('clangd', {
+    cmd = { 'clangd' },
+    filetypes = { 'c', 'cpp' },
+    on_attach = on_attach,
 })
 
 vim.diagnostic.config({
@@ -40,20 +60,20 @@ function create_lsp_keymap()
         -- { "<Leader>rs", "<cmd>LspRestart<CR>",                    desc = "Restart LSP" },
 
         -- TeleScope
-        { "gR",         builtin.lsp_references,       desc = "Show LSP references" },
-        { "gd",         builtin.lsp_definitions,      desc = "Show LSP definitions" },
-        { "gi",         builtin.lsp_implementations,  desc = "Show LSP implementations" },
-        { "gt",         builtin.lsp_type_definitions, desc = "Show LSP type definitions" },
+        { "gR",         vim.lsp.buf.references,                                                                    desc = "Show LSP references" },
+        { "gd",         builtin.lsp_definitions,                                                                   desc = "Show LSP definitions" },
+        { "gi",         vim.lsp.buf.implementation,                                                                desc = "Show LSP implementations" },
+        { "gt",         vim.lsp.buf.type_definition,                                                               desc = "Show LSP type definitions" },
         -- { "<Leader>D",  "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics" },
 
         -- LSP buffer
-        { "gD",         vim.lsp.buf.declaration,      desc = "Go to declaration" },
-        { "K",          vim.lsp.buf.hover,            desc = "Show documentation for what is under the cursor" },
-        { "<Leader>rn", vim.lsp.buf.rename,           desc = "Smart rename" },
-        { "<Leader>ca", vim.lsp.buf.code_action,      desc = "Show available code actions" },
+        { "gD",         vim.lsp.buf.declaration,                                                                   desc = "Go to declaration" },
+        { "K",          function() vim.lsp.buf.hover { border = 'rounded', max_height = 25, max_width = 120 } end, desc = "Show documentation for what is under the cursor" },
+        { "<Leader>rn", vim.lsp.buf.rename,                                                                        desc = "Smart rename" },
+        { "<Leader>ca", vim.lsp.buf.code_action,                                                                   desc = "Show available code actions" },
 
         -- diagnostic
-        { "<Leader>d",  vim.diagnostic.open_float,    desc = "Show line diagnostics" },
+        { "<Leader>d",  vim.diagnostic.open_float,                                                                 desc = "Show line diagnostics" },
     })
 end
 
@@ -91,6 +111,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.lsp.enable("clangd")
-vim.lsp.enable("luals")
+vim.lsp.enable("lua_ls")
 vim.lsp.enable("cmakels")
 vim.lsp.enable("pythonls")
