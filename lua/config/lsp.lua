@@ -91,8 +91,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-vim.lsp.enable("clangd")
-vim.lsp.enable("luals")
-vim.lsp.enable("cmakels")
-vim.lsp.enable("pythonls")
-vim.lsp.enable("mesonls")
+vim.lsp.enable({
+    "clangd",
+    "luals",
+    "cmakels",
+    "pythonls",
+    "mesonls"
+})
