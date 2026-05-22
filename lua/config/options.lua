@@ -3,12 +3,9 @@ local options = {
     number         = true,  -- Print the line number in front of each line
     relativenumber = false, -- Show the line number relative to the line
     -- with the cursor in front of each line
-    scrolloff      = 8,     -- Minimal number of screen lines to
-    -- keep above and below the cursor
-    showmode       = false, -- If in Insert, Replace or Visual mode
+    scrolloff      = 8,     -- Minimal number of screen lines to keep above and below the cursor
     -- put a message on the last line
     colorcolumn    = "100", -- 'colorcolumn' is a comma-separated list
-    signcolumn     = "yes", -- When and how to draw the signcolumn
     wrap           = false, -- When on, lines longer than the width of the window will wrap
 
 
@@ -30,28 +27,27 @@ local options = {
     autocomplete      = true, -- 'nvim-cmp' optional now
     autocompletedelay = 200,  -- Delay in ms before the autocomplete menu appears
 
-    -- A comma-separated list of options for Insert mode completion
-    completeopt       = "menu,menuone,preview,noselect",
-
-    -- bracket matching
-    showmatch         = true, -- When a bracket is inserted, briefly jump to the matching one
-    matchtime         = 2,    -- Tenths of a second to show the matching paren
-
-    -- search settings
+    -- Search settings
     ignorecase        = true, -- Ignore case in search patterns
-    smartcase         = true, -- Override the 'ignorecase' option if the search
-    -- pattern contains upper case characters
-    hlsearch          = false, -- When there is a previous search pattern,
-    -- highlight all its matches
-    incsearch         = true, -- While typing a search command, show where the pattern,
-    -- as it was typed so far, matches
+    smartcase         = true, -- Case sensitive if uppercase in search pattern
+    hlsearch          = false, -- When there is a previous search pattern, highlight all its matches
+    incsearch         = true, -- Show matches as you type
 
-    -- colors
+    -- Visual settings
     termguicolors     = true,  -- Enables 24-bit RGB color in the Terminal UI
+    signcolumn        = "yes", -- Always draw the signcolumn
+    -- bracket matching
+    showmatch         = true,  -- When a bracket is inserted, briefly jump to the matching one
+    matchtime         = 2,     -- Tenths of a second to show the matching paren
     -- of screen columns that are highlighted
     background        = "dark", -- When set to "dark" or "light", adjusts the
     -- default color groups for that background type
     winborder         = "rounded", -- Border type on floating windows
+    cmdheight         = 1,     -- Command line height
+    showmode          = false, -- Don't show mode in command line
+    completeopt       = "menu,menuone,noselect",
+    ruler             = false, -- Disable the default ruler
+    virtualedit       = "block", -- Allow cursor to move where there is no text in visual mode
 
 
     -- This is a list of character encodings considered when starting to edit an existing file
@@ -63,37 +59,38 @@ local options = {
 
 
     -- Text display
-    encoding  = "utf8", -- String-encoding used internally and for RPC communication
-    emoji     = false, -- When on all Unicode emoji characters
+    encoding       = "utf8", -- String-encoding used internally and for RPC communication
+    emoji          = false, -- When on all Unicode emoji characters
     -- are considered to be full width
-    list      = true, -- Useful to see the difference between tabs
+    list           = true, -- Useful to see the difference between tabs
     -- and spaces and for trailing blanks
-    showbreak = "…", -- String to put at the start of lines that have been wrapped
+    showbreak      = "…", -- String to put at the start of lines that have been wrapped
     -- Strings to use in 'list' mode and for the :list command
-    listchars = "tab:▸ ,trail:·,nbsp:␣,extends:⇢,precedes:⇠",
+    listchars      = "tab:▸ ,trail:·,nbsp:␣,extends:⇢,precedes:⇠",
 
+    -- Split behavior
+    splitbelow     = true, -- Horizontal splits go below
+    splitright     = true, -- Vertical splits go right
+    splitkeep      = "screen",
 
-    -- Swap and session
-    swapfile       = false,
+    -- File handling
+    swapfile       = false,                           -- Don't create swap files
+    undofile       = true,                            -- Persistent undo
+    undodir        = vim.fn.expand('~/.vim/undodir'), -- Undo directory
+    updatetime     = 300,                             -- Faster completion
+    autoread       = true,                            -- Auto reload files changed outside vim
+
     -- Changes the effect of the :mksession command.
-    sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+    sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions",
+
+    -- Performance improvements
+    redrawtime     = 10000,
+    maxmempattern  = 20000
 }
 
 for k, v in pairs(options) do
     vim.o[k] = v
 end
-
--- Add filetypes
-vim.filetype.add({
-    extension = {
-        hlsl = "hlsl",
-    },
-})
-
-
--- Sets <space> as the leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 
 -- Virutal line diagnostics
@@ -106,10 +103,17 @@ vim.g.maplocalleader = ' '
 
 
 -- Use italic font for comments
-local function update_hl(group, tbl)
+local update_hl = function(group, tbl)
     local old_hl = vim.api.nvim_get_hl_by_name(group, true)
     local new_hl = vim.tbl_extend('force', old_hl, tbl)
     vim.api.nvim_set_hl(0, group, new_hl)
 end
 
 -- update_hl( 'Comment', { italic = true } )
+
+-- Add filetypes
+vim.filetype.add({
+    extension = {
+        hlsl = "hlsl",
+    },
+})
