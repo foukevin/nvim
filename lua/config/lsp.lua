@@ -50,7 +50,6 @@ vim.diagnostic.config({
 })
 
 function create_lsp_keymap()
-    local builtin = require("telescope.builtin")
     local wk = require("which-key")
     wk.add({
         mode = "n",
@@ -59,11 +58,10 @@ function create_lsp_keymap()
 
         -- { "<Leader>rs", "<cmd>LspRestart<CR>",                    desc = "Restart LSP" },
 
-        -- TeleScope
-        { "gR",         vim.lsp.buf.references,                                                                    desc = "Show LSP references" },
-        { "gd",         builtin.lsp_definitions,                                                                   desc = "Show LSP definitions" },
-        { "gi",         vim.lsp.buf.implementation,                                                                desc = "Show LSP implementations" },
-        { "gt",         vim.lsp.buf.type_definition,                                                               desc = "Show LSP type definitions" },
+        { "gR",         vim.lsp.buf.references,                                                                    desc = "Show references" },
+        -- { "gd",         builtin.lsp_definitions,                                                                   desc = "Show definitions" },
+        { "gi",         vim.lsp.buf.implementation,                                                                desc = "Show implementations" },
+        { "gt",         vim.lsp.buf.type_definition,                                                               desc = "Show type definitions" },
         -- { "<Leader>D",  "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics" },
 
         -- LSP buffer
