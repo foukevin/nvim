@@ -35,24 +35,26 @@ local create_lsp_keymap = function()
     wk.add({
         mode = "n",
         buffer = 0,
-        { "g",          group = "LSP" },
+        { "g",         group = "LSP" },
 
-        -- { "<Leader>rs", "<cmd>LspRestart<CR>",                    desc = "Restart LSP" },
-
-        { "gR",         vim.lsp.buf.references,                                                                    desc = "Show references" },
-        -- { "gd",         builtin.lsp_definitions,                                                                   desc = "Show definitions" },
-        { "gi",         vim.lsp.buf.implementation,                                                                desc = "Show implementations" },
-        { "gt",         vim.lsp.buf.type_definition,                                                               desc = "Show type definitions" },
-        { "<Leader>D",  fzf.lsp_document_diagnostics,                                                              desc = "Show buffer diagnostics" },
+        { "gR",        vim.lsp.buf.references,       desc = "Show references" },
+        { "gd",        vim.lsp.buf.definition,       desc = "Go to definition" },
+        { "gi",        vim.lsp.buf.implementation,   desc = "Show implementations" },
+        { "gt",        vim.lsp.buf.type_definition,  desc = "Show type definitions" },
+        { "<Leader>D", fzf.lsp_document_diagnostics, desc = "Show buffer diagnostics" },
 
         -- LSP buffer
-        { "gD",         vim.lsp.buf.declaration,                                                                   desc = "Go to declaration" },
-        { "K",          function() vim.lsp.buf.hover { border = 'rounded', max_height = 25, max_width = 120 } end, desc = "Show documentation for what is under the cursor" },
-        { "<Leader>rn", vim.lsp.buf.rename,                                                                        desc = "Smart rename" },
-        { "<Leader>ca", fzf.lsp_code_actions,                                                                      desc = "Show available code actions" },
+        { "gD",        vim.lsp.buf.declaration,      desc = "Go to declaration" },
+        {
+            "K",
+            function() vim.lsp.buf.hover { border = 'rounded', max_height = 25, max_width = 120 } end,
+            desc = "Show documentation for what is under the cursor"
+        },
+        { "<Leader>rn", vim.lsp.buf.rename,        desc = "Smart rename" },
+        { "<Leader>ca", fzf.lsp_code_actions,      desc = "Show available code actions" },
 
         -- diagnostic
-        { "<Leader>d",  vim.diagnostic.open_float,                                                                 desc = "Show line diagnostics" },
+        { "<Leader>d",  vim.diagnostic.open_float, desc = "Show line diagnostics" },
     })
 end
 
