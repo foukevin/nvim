@@ -50,6 +50,7 @@ vim.diagnostic.config({
 })
 
 function create_lsp_keymap()
+    local fzflua = require("fzf-lua")
     local wk = require("which-key")
     wk.add({
         mode = "n",
@@ -62,13 +63,13 @@ function create_lsp_keymap()
         -- { "gd",         builtin.lsp_definitions,                                                                   desc = "Show definitions" },
         { "gi",         vim.lsp.buf.implementation,                                                                desc = "Show implementations" },
         { "gt",         vim.lsp.buf.type_definition,                                                               desc = "Show type definitions" },
-        -- { "<Leader>D",  "<cmd>Telescope diagnostics bufnr=0<CR>", desc = "Show buffer diagnostics" },
+        { "<Leader>D",  fzflua.lsp_document_diagnostics,                                                           desc = "Show buffer diagnostics" },
 
         -- LSP buffer
         { "gD",         vim.lsp.buf.declaration,                                                                   desc = "Go to declaration" },
         { "K",          function() vim.lsp.buf.hover { border = 'rounded', max_height = 25, max_width = 120 } end, desc = "Show documentation for what is under the cursor" },
         { "<Leader>rn", vim.lsp.buf.rename,                                                                        desc = "Smart rename" },
-        { "<Leader>ca", vim.lsp.buf.code_action,                                                                   desc = "Show available code actions" },
+        { "<Leader>ca", fzflua.lsp_code_actions,                                                                   desc = "Show available code actions" },
 
         -- diagnostic
         { "<Leader>d",  vim.diagnostic.open_float,                                                                 desc = "Show line diagnostics" },
