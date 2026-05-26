@@ -12,6 +12,10 @@ vim.lsp.config('*', {
 
 vim.diagnostic.config({
     virtual_text = false,
+    -- virtual_lines = {
+    --     -- Only show virtual line diagnostics for the current cursor line
+    --     current_line = true,
+    -- },
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = " ",
@@ -92,10 +96,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+-- Enable LSP servers for Neovim 0.11+
 vim.lsp.enable({
     "clangd",
     "luals",
     "cmakels",
     "pythonls",
-    "mesonls"
+    "mesonls",
+    "stylua"
 })
