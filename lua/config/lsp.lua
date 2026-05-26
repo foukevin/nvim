@@ -32,15 +32,16 @@ vim.diagnostic.config({
 local create_lsp_keymap = function()
     local fzf = require("fzf-lua")
     local wk = require("which-key")
+
     wk.add({
         mode = "n",
         buffer = 0,
         { "g",         group = "LSP" },
 
-        { "gR",        vim.lsp.buf.references,       desc = "Show references" },
+        { "gR",        fzf.lsp_references,           desc = "Show references" },
         { "gd",        vim.lsp.buf.definition,       desc = "Go to definition" },
-        { "gi",        vim.lsp.buf.implementation,   desc = "Show implementations" },
-        { "gt",        vim.lsp.buf.type_definition,  desc = "Show type definitions" },
+        { "gi",        fzf.lsp_implementations,      desc = "Show implementations" },
+        { "gt",        fzf.lsp_typedefs,             desc = "Show type definitions" },
         { "<Leader>D", fzf.lsp_document_diagnostics, desc = "Show buffer diagnostics" },
 
         -- LSP buffer
