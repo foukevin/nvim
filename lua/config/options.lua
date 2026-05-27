@@ -39,7 +39,6 @@ opt.signcolumn = "yes" -- Always draw the signcolumn bracket matching
 opt.showmatch = true -- When a bracket is inserted, briefly jump to the matching one
 opt.matchtime = 2 -- Tenths of a second to show the matching paren/bracket
 opt.background = "dark" -- When set to "dark" or "light", adjusts the default color groups for that background type
-opt.winborder = "rounded" -- Border type on floating windows
 opt.cmdheight = 1 -- Command line height
 opt.showmode = false -- Don't show mode in command line
 opt.completeopt = "menu,menuone,noselect"
@@ -96,6 +95,17 @@ local undodir = vim.fn.expand("~/.vim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
 	vim.fn.mkdir(undodir, "p")
 end
+
+opt.winborder = "rounded" -- Border type on floating windows
+opt.pumborder = "rounded" -- Border type on popup menus
+opt.fillchars = {
+	foldopen = "",
+	foldclose = "",
+	fold = " ",
+	foldsep = " ",
+	diff = "╱",
+	eob = " ",
+}
 
 -- Use italic font for comments
 local update_hl = function(group, tbl)
