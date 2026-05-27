@@ -1,3 +1,5 @@
+require("plugins.markdown")
+require("plugins.git")
 require("plugins.snacks")
 require("plugins.whichkey")
 require("plugins.auto-session")

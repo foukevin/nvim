@@ -12,6 +12,7 @@ opt.wrap = false -- When on, lines longer than the width of the window will wrap
 opt.tabstop = 4 -- Tab width
 opt.softtabstop = 4
 opt.shiftwidth = 4 -- Indent width
+opt.shiftround = true
 opt.expandtab = true -- Use space instead of tabs
 opt.smartindent = true -- Do smart autoindenting when starting a new line
 
