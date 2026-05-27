@@ -1,3 +1,5 @@
+-- Configuration inspired by https://gitlab.com/tduyng/nvim
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
