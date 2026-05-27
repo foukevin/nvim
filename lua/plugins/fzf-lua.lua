@@ -1,4 +1,10 @@
-local keymap = function()
+local M = {
+	"ibhagwan/fzf-lua",
+	--optional icon support
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+}
+
+function M.opts()
 	local wk = require("which-key")
 	local builtin = require("fzf-lua")
 	wk.add({
@@ -12,25 +18,9 @@ local keymap = function()
 	})
 end
 
-local config = function()
+function M.config()
 	local fzf = require("fzf-lua")
 	fzf.register_ui_select()
 end
-
-local M = {
-	{
-		"ibhagwan/fzf-lua",
-
-		--optional icon support
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		---@module 'fzf-lua'
-		---@type fzf-lua.Config|{}
-		---@diagnostic disable: missing-fields
-		opts = keymap,
-		---@diagnostic enable: missing-fields
-		---
-		config = config,
-	},
-}
 
 return M
