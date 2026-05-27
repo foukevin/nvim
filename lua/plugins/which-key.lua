@@ -1,10 +1,9 @@
-local M = {
-	"folke/which-key.nvim",
-	event = "VeryLazy",
-}
+vim.pack.add({
+	"https://github.com/folke/which-key.nvim",
+})
 
-function M.config()
-	require("which-key").setup({ preset = "helix" })
-end
+local wk = require("which-key")
 
-return M
+wk.setup({
+	preset = "helix",
+})

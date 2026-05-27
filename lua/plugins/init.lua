@@ -1,0 +1,5 @@
+require("plugins.snacks")
+require("plugins.which-key")
+require("plugins.auto-session")
+require("plugins.nvim-treesitter")
+require("plugins.fzf-lua")

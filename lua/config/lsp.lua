@@ -1,3 +1,5 @@
+-- https://tduyng.com/blog/neovim-lsp-native/
+--
 -- Set default root markers for all clients
 vim.lsp.config("*", {
 	capabilities = {
