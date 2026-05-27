@@ -1,5 +1,5 @@
 require("plugins.snacks")
-require("plugins.which-key")
+require("plugins.whichkey")
 require("plugins.auto-session")
-require("plugins.nvim-treesitter")
+require("plugins.treesitter")
 require("plugins.fzf-lua")
