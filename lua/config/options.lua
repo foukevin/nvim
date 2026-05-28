@@ -62,8 +62,8 @@ opt.showbreak = "…" -- String to put at the start of lines that have been wrap
 opt.listchars = "tab:▸ ,trail:·,nbsp:␣,extends:⇢,precedes:⇠"
 
 -- Folding settings
-opt.smoothscroll = false
-vim.wo.foldmethod = "manual"
+opt.smoothscroll = true
+vim.wo.foldmethod = "expr"
 opt.foldlevel = 99 -- Start with all folds open
 
 -- Split behavior
