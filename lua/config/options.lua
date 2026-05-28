@@ -42,7 +42,11 @@ opt.matchtime = 2 -- Tenths of a second to show the matching paren/bracket
 opt.background = "dark" -- When set to "dark" or "light", adjusts the default color groups for that background type
 opt.cmdheight = 1 -- Command line height
 opt.showmode = false -- Don't show mode in command line
+opt.pumheight = 10 -- Popup menu height
 opt.completeopt = "menu,menuone,noselect"
+opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
+opt.concealcursor = "" -- Don't hide cursor line markup
+opt.synmaxcol = 300 -- Syntax highlighting limit
 opt.ruler = false -- Disable the default ruler
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual mode
 
@@ -107,6 +111,8 @@ opt.fillchars = {
 	diff = "╱",
 	eob = " ",
 }
+
+opt.laststatus = 3 -- Global status line
 
 -- Use italic font for comments
 local update_hl = function(group, tbl)
