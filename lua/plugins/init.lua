@@ -1,3 +1,4 @@
+require("plugins.blink")
 require("plugins.markdown")
 require("plugins.git")
 require("plugins.snacks")

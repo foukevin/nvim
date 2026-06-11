@@ -1,0 +1,12 @@
+{
+  "Say hello to the world": {
+    "prefix": ["hw", "hello"],
+    "body": "Hello, ${1:world}!$0",
+    "description": "Hello world test"
+  },
+  "Function header": {
+      "prefix": ["fht"],
+      "body": "/*\n * ${1:function}\n */$0",
+    "description": "Function header template"
+  }
+}

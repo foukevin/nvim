@@ -84,7 +84,7 @@ vim.lsp.enable({
 	"clangd",
 	"luals",
 	"cmakels",
-	"pythonls",
+	"pyright",
 	"mesonls",
 	"stylua",
 })

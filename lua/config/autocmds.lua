@@ -56,6 +56,15 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	end,
 })
 
+-- Set filetype for .code-snippets files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	group = augroup("code_snippets_filetype"),
+	pattern = { "*.code-snippets" },
+	callback = function()
+		vim.opt_local.filetype = "json"
+	end,
+})
+
 -- Remove trailing spaces before saving
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*" },
